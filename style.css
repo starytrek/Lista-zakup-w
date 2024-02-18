@@ -5,12 +5,27 @@
 }
 
 body {
-	display: flex;
-	flex-direction: column;
+	/* display: flex;
+	flex-direction: column; */
 
 	font-family: 'Ubuntu', sans-serif;
 	background-color: #e5e5e5;
 }
+
+.container {
+	display: flex;
+	
+
+}
+.main{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+
 h1 {
+	display: flex;
 	font-size: 70px;
 }
+

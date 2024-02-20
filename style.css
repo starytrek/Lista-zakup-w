@@ -17,26 +17,22 @@ body {
 	justify-content: center;
 	flex-direction: column;
 	padding-top: 100px;
-	
-
 }
-.main{
-display: flex;
-flex-direction: column;
-/* align-items: center; */
-/* justify-content: center; */
-padding-top: 50px;
+.main {
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+	/* justify-content: center; */
+	padding-top: 50px;
 }
-.new-products{
+.new-products {
 	color: aquamarine;
 }
-.my-list{
+.my-list {
 	padding-top: 30px;
 }
 
 h1 {
 	display: flex;
 	font-size: 70px;
-
 }
-

@@ -1,24 +1,30 @@
-const products = []
-
 const productBtn = document.getElementById('product-btn')
 const ulList = document.getElementById('product-list')
+const nameInput = document.getElementById('product-input')
+const priceInput = document.getElementById('price-input')
+const clearBtn = document.getElementById('clear-btn')
+
+let products = JSON.parse(localStorage.getItem('products')) || []
 
 const addToList = () => {
-	const nameInput = document.getElementById('product-input')
-	const priceInput = document.getElementById('price-input')
-	const actualPrice = priceInput.value
-	const actualName = nameInput.value
+	const actualPrice = priceInput.value.trim()
+	const actualName = nameInput.value.trim()
 
-	if (actualName.trim() === '') {
+	if (actualName === '') {
 		const inputInfo = document.getElementById('input-info')
-		inputInfo.innerText = 'Nie dałeś produktu. Mordo'
+		inputInfo.innerText = 'Nie dodałeś nic do listy! Wpisz nazwę produktu.'
+		return
+	}
+	if (actualPrice === '') {
+		priceInput.focus()
 		return
 	}
 
-	addProduct(1, actualName, actualPrice)
+	addProduct(actualName, actualPrice)
 	showProducts()
 	nameInput.value = ''
 	priceInput.value = ''
+	nameInput.focus()
 	const inputInfo = document.getElementById('input-info')
 	inputInfo.innerText = 'Daj nazwę i cenę'
 }
@@ -28,38 +34,39 @@ const showProducts = () => {
 	products.forEach((product, index) => {
 		const li = document.createElement('li')
 		li.innerText = `${product.name} - ${product.price}`
-
-		li.addEventListener('click', () => {
-			console.log(`Index: ${index}`)
-			product.showName()
-		})
-
 		ulList.appendChild(li)
 	})
 }
 
-const addProduct = (id = '?', name = 'produkt', price = '100', arr = products) => {
-	arr.push({
-		id,
-		name,
-		price,
-		showName: () => console.log(`Właśnie dodałeś ${name}`),
-	})
+const addProduct = (name, price) => {
+	products.push({ name, price })
+	saveToLocalStorage()
+}
+
+const saveToLocalStorage = () => {
+	localStorage.setItem('products', JSON.stringify(products))
+}
+
+const clearLocalStorage = () => {
+	localStorage.removeItem('products')
+	products = [] // Czyszczenie tablicy products
+	ulList.innerHTML = '' // Usuwanie zawartości listy
 }
 
 productBtn.addEventListener('click', addToList)
+clearBtn.addEventListener('click', clearLocalStorage)
+
+// Obsługa zdarzenia keypress na polu tekstowym z nazwą produktu i cenie
+nameInput.addEventListener('keypress', function (event) {
+	if (event.key === 'Enter') {
+		addToList()
+	}
+})
+
+priceInput.addEventListener('keypress', function (event) {
+	if (event.key === 'Enter') {
+		addToList()
+	}
+})
+
 document.addEventListener('DOMContentLoaded', showProducts)
-
-// Obsługa zdarzenia keypress na polu tektsowym z nazwą produktu
-document.getElementById('product-input').addEventListener('keypress', function (event) {
-	if (event.key === 'Enter') {
-		addToList()
-	}
-})
-
-// Obsługa zdarzenia keypress na polu tektsowym z ceną produktu
-document.getElementById('price-input').addEventListener('keypress', function (event) {
-	if (event.key === 'Enter') {
-		addToList()
-	}
-})

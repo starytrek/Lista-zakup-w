@@ -12,12 +12,12 @@
 // aelf "Add Event Listener Function"
 
 const products = [
-	{
-		id: 1,
-		name: 'Jabłka',
-		price: 5,
-		showName: () => console.log('Dodałeś jabłka'),
-	},
+	// {
+	// 	id: 1,
+	// 	name: 'Jabłka',
+	// 	price: 5,
+	// 	showName: () => console.log('Dodałeś jabłka'),
+	// },
 ]
 
 const productBtn = document.getElementById('product-btn')
@@ -29,15 +29,28 @@ const addToList = () => {
 	const actualName = nameInput.value
 	addProduct(1, actualName, actualPrice)
 	// console.log([products])
+	showProducts() // Wywołujemy ponownie funkcję showProducts, aby zaktualizować listę
 }
 
 const showProducts = () => {
-	const li = document.createElement('li')
-	const productName = products[0].name
-	const productPrice = products[0].price
-	li.innerText = `${productName}-----------${productPrice}`
-	ulList.appendChild(li)
-	console.log()
+	ulList.innerHTML = ''
+	products.forEach((product, index) => {
+		const li = document.createElement('li')
+		li.innerText = `${product.name} - ${product.price}`
+
+		li.addEventListener('click', () => {
+			console.log(`Index: ${index}`)
+			product.showName()
+		})
+
+		ulList.appendChild(li)
+	})
+	// const li = document.createElement('li')
+	// const productName = products[0].name
+	// const productPrice = products[0].price
+	// li.innerText = `${productName}-----------${productPrice}`
+	// ulList.appendChild(li)
+	// console.log()
 }
 
 const addProduct = (id = '?', name = 'produkt', price = '100', arr = products) => {

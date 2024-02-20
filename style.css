@@ -5,8 +5,8 @@
 }
 
 body {
-	/* display: flex;
-	flex-direction: column; */
+	display: flex;
+	flex-direction: column;
 
 	font-family: 'Ubuntu', sans-serif;
 	background-color: #e5e5e5;

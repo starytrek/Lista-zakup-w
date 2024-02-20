@@ -18,7 +18,7 @@ body {
 	flex-direction: column;
 	padding-top: 100px;
 }
-.main {
+main {
 	display: flex;
 	flex-direction: column;
 	/* align-items: center; */

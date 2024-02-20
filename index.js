@@ -19,9 +19,17 @@ const products = [
 		showName: () => console.log('Dodałeś jabłka'),
 	},
 ]
-const ulList = document.getElementById('product-list')
-const input = document.getElementById('product-input').value
+
 const productBtn = document.getElementById('product-btn')
+const ulList = document.getElementById('product-list')
+const addToList = () => {
+	const nameInput = document.getElementById('product-input')
+	const priceInput = document.getElementById('price-input')
+	const actualPrice = priceInput.value
+	const actualName = nameInput.value
+	addProduct(1, actualName, actualPrice)
+	// console.log([products])
+}
 
 const showProducts = () => {
 	const li = document.createElement('li')
@@ -63,6 +71,6 @@ const addFirst = (id = '?', name = 'produkt', price = '100', arr = products) => 
 	})
 }
 
-productBtn.addEventListener('click', addProduct())
-document.addEventListener('DOMContentLoaded', showProducts())
+productBtn.addEventListener('click', addToList)
+document.addEventListener('DOMContentLoaded', showProducts)
 // addEventListener("click",  , false);

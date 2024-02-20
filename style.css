@@ -5,27 +5,39 @@
 }
 
 body {
-	/* display: flex;
-	flex-direction: column; */
-
-	font-family: 'Ubuntu', sans-serif;
+	/* display: flex; */
+	/* flex-direction: column; */
+	
 	background-color: #e5e5e5;
+	font-family: 'Ubuntu', sans-serif;
 }
 
 .container {
 	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding-top: 100px;
 	
 
 }
 .main{
 display: flex;
-align-items: center;
-justify-content: center;
+flex-direction: column;
+/* align-items: center; */
+/* justify-content: center; */
+padding-top: 50px;
 }
-
+.new-products{
+	color: aquamarine;
+}
+.my-list{
+	padding-top: 30px;
+}
 
 h1 {
 	display: flex;
 	font-size: 70px;
+
 }
 

@@ -7,11 +7,13 @@
 body {
 	font-family: 'Ubuntu', sans-serif;
 	background-color: lightslategray;
+	background-image: linear-gradient(to right, #46ffdd, #fbd786, #00b3ff);
 }
 h1 {
 	font-size: 70px;
-	margin-bottom: 20px;
-	color: aliceblue;
+	color: rgba(401, 401, 401, 0.8);
+	border: solid 1px black;
+	padding: 50px;
 }
 /* background-color: black; */
 

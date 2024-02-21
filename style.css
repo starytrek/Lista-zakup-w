@@ -6,8 +6,20 @@
 
 body {
 	font-family: 'Ubuntu', sans-serif;
+	background-color: lightslategray;
 }
+h1 {
+	font-size: 70px;
+	margin-bottom: 20px;
+	color: aliceblue;
+}
+/* background-color: black; */
 
+main {
+	display: flex;
+	flex-direction: column;
+	padding-top: 50px;
+}
 .container {
 	display: flex;
 	align-items: center;
@@ -16,40 +28,47 @@ body {
 	padding-top: 100px;
 }
 
-main {
-	display: flex;
-	flex-direction: column;
-	padding-top: 50px;
-}
-
-.new-products {
-	color: aquamarine;
-}
+/* .new-products {
+} */
 
 .my-list {
 	padding-top: 30px;
 }
-
-h1 {
-	font-size: 70px;
-	margin-bottom: 20px;
+.input {
+	height: 50px;
+	border: none;
+	background-color: lightcyan;
+	padding: 10px;
+	border-radius: 50vh;
+	font-size: 16px;
 }
-
-
+.input-price {
+	left: -100px; /*nie działa*/
+	background-color: #fff;
+}
 button {
+	height: 50px;
+	border-radius: 50vh;
 	padding: 10px 20px;
 	font-size: 16px;
 	cursor: pointer;
 	color: #fff;
 	border: none;
-	border-radius: 5px;
+	/* border-radius: 5px; */
 	background-color: #1b4ba6;
 	position: relative;
 	overflow: hidden;
 	margin-bottom: 10px; /* Oddziel przyciski od siebie */
-  }
-  
-  button::before {
+}
+.add-btn {
+	left: -80px;
+	/* background-color: yellowgreen; */
+}
+.clear-btn {
+	background-color: tomato;
+}
+
+button::before {
 	content: '';
 	position: absolute;
 	top: 50%;
@@ -57,27 +76,22 @@ button {
 	width: 300%;
 	height: 300%;
 	background: linear-gradient(
-	  to right,
-	  rgba(51, 5, 218, 0.956) 0%,
-	  rgba(201, 201, 201, 0.336) 50%,
-	  rgba(180, 5, 5, 0.805) 100%
+		to right,
+		rgba(51, 5, 218, 0.956) 0%,
+		rgba(201, 201, 201, 0.336) 50%,
+		rgba(180, 5, 5, 0.805) 100%
 	);
 	border-radius: 50%;
 	z-index: 2;
 	opacity: 0;
 	transition: opacity 0.5s;
 	transform: translate(-50%, -50%);
-  }
-  
-  button:hover::before {
+}
+
+button:hover::before {
 	opacity: 1;
-  }
-  
-  button:hover {
+}
+
+button:hover {
 	color: #000; /* Zmiana koloru tekstu na czarny po najechaniu myszką */
-  }
-  
-  button#clear-btn {
-	background-color: tomato; /* Zmiana koloru przycisku "Wyczyść dane" na tomato */
-  }
-  
+}

@@ -11,30 +11,34 @@ body {
 }
 h1 {
 	font-size: 70px;
-	color: rgba(401, 401, 401, 0.8);
-	border: solid 1px black;
+	color: rgba(901, 101, 101, 0.9);
 	padding: 50px;
+	border: solid 1px black;
+	margin-bottom: 20px;
 }
 /* background-color: black; */
-
-main {
-	display: flex;
-	flex-direction: column;
-	padding-top: 50px;
-}
 .container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding-top: 100px;
+	padding-top: 50px;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	/* padding-top: 50px; */
 }
 
 /* .new-products {
 } */
 
-.my-list {
-	padding-top: 30px;
+.info {
+	padding: 40px 0px;
+	/* margin: 20px; */
+	color: #1b4ba6;
+	text-transform: uppercase;
 }
 .input {
 	height: 50px;
@@ -46,8 +50,18 @@ main {
 }
 .input-price {
 	left: -100px; /*nie działa*/
-	background-color: #fff;
+	/* background-color: #fff; */
 }
+.fajny-produkt {
+	display: flex;
+	/* color: tomato; */
+	justify-content: space-between;
+	width: 90%;
+	/* padding-right: 20px; */
+	/* margin-right: 20px; */
+
+}
+
 button {
 	height: 50px;
 	border-radius: 50vh;
@@ -62,15 +76,60 @@ button {
 	overflow: hidden;
 	margin-bottom: 10px; /* Oddziel przyciski od siebie */
 }
+.my-list li {
+	list-style-type: none;
+	height: 35px;
+	border: none;
+	background-color: lightcyan;
+	border-radius: 50vh;
+	display: flex;
+	align-items: center;
+	padding: 20px;
+	margin: 10px 0;
+}
+
+.tools {
+	display: inline-block;
+}
+
+.tools button {
+	padding: 15px 10px;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.tools button:hover {
+	background-color: #ddd;
+}
+
+.complete {
+	color: var(--light-blue);
+}
+
+.edit {
+	font-weight: bold;
+	color: rgb(15, 179, 69);
+}
+
+.delete {
+	color: tomato;
+}
 .add-btn {
 	left: -80px;
 	/* background-color: yellowgreen; */
 }
 .clear-btn {
+	margin: 30px;
+	width: 200px;
 	background-color: tomato;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-button::before {
+.add-btn::before {
 	content: '';
 	position: absolute;
 	top: 50%;
@@ -90,10 +149,10 @@ button::before {
 	transform: translate(-50%, -50%);
 }
 
-button:hover::before {
+.add-btn:hover::before {
 	opacity: 1;
 }
 
-button:hover {
+.add-btn:hover {
 	color: #000; /* Zmiana koloru tekstu na czarny po najechaniu myszką */
 }

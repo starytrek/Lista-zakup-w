@@ -6,19 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista zakupów</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/79ad30367b.js" crossorigin="anonymous"></script>
 </head>
+
 
 <body>
   <div class="container">
-    <h1>LISTA ZAKUPÓW</h1>
+    <!-- <h1>LISTA ZAKUPÓW</h1> -->
     <main>
-      <span id="input-info">Daj nazwę i cenę</span>
+      <div class="info" id="input-info">Daj nazwę i cenę</div>
       <div class="new-products">
-        <input type="text" class="input input-product" id="product-input" placeholder="Wpisz nazwę...">
+        <input type="text" class="input input-product" id="product-input" placeholder="Dodaj nazwę produktu...">
         <input type="text" class="input input-price" id="price-input" placeholder="Wpisz cenę...">
         <button class="add-btn" id="product-btn">Dodaj</button>
       </div>
-      <ul class="my-list" id="product-list"></ul>
+      <div class="tools">
+        <button class="complete"><i class="fas fa-check"></i></button>
+        <button class="edit">EDIT</button>
+        <button class="delete"><i class="fas fa-times"></i></button>
+      </div>
+      <ul class="my-list" id="product-list">
+        <!-- <li class="first-product">popopo
+        </li>  -->
+      </ul>
       <button class="clear-btn" id="clear-btn">Wyczyść dane</button>
     </main>
   </div>
@@ -27,3 +37,4 @@
 </body>
 
 </html>
+<div class="product"></div>

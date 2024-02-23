@@ -29,15 +29,47 @@ const addToList = () => {
 	inputInfo.innerText = 'Daj nazwę i cenę'
 }
 
-const showProducts = () => {
-	ulList.innerHTML = ''
-	products.forEach((product, index) => {
-		const li = document.createElement('li')
-		li.innerText = `${product.name} - ${product.price}`
-		ulList.appendChild(li)
-	})
-}
+// const showProducts = () => {
+// 	ulList.innerHTML = ''
+// 	products.forEach((product, index) => {
+// 		const li = document.createElement('li')
+// 		// li.innerHTML = ``
+// 		const liProduct = document.createElement('div')
+// 		liProduct.classList.add('fajny-produkt')
+// 		const liSpan = document.createElement('span')
+// 		liSpan.innerHTML = `${product.name}`
+// 		const liSpan2 = document.createElement('span')
+// 		liSpan2.innerHTML = `${product.price}`
+// 		liProduct.appendChild(liSpan)
+// 		liProduct.appendChild(liSpan2)
+// 		li.appendChild(liProduct)
+// 		// li.innerHTML = `${product.name} ----------- ${product.price}`
+// 		ulList.appendChild(li)
+// 	})
+// }
 
+// const showProducts = () => {
+//     ulList.innerHTML = '';
+//     products.forEach(product => {
+//         const li = document.createElement('li');
+//         li.innerHTML = `
+//             <div class="fajny-produkt">
+//                 <span>${product.name}</span>
+//                 <span>${product.price}</span>
+//             </div>`;
+//         ulList.appendChild(li);
+//     });
+// };
+const showProducts = () => {
+    ulList.innerHTML = products.map(({ name, price }) => `
+        <li>
+            <div class="fajny-produkt">
+                <span>${name}</span>
+                <span>${price}</span>
+            </div>
+        </li>
+    `).join('');
+};
 const addProduct = (name, price) => {
 	products.push({ name, price })
 	saveToLocalStorage()
@@ -48,9 +80,9 @@ const saveToLocalStorage = () => {
 }
 
 const clearLocalStorage = () => {
-	localStorage.removeItem('products')
-	products = [] // Czyszczenie tablicy products
-	ulList.innerHTML = '' // Usuwanie zawartości listy
+	localStorage.removeItem('products') //ze schowka
+	products = [] // Czyszczenie tablicy products pamiec podreczna przeglądarki
+	ulList.innerHTML = '' // Usuwanie zawartości listy na ekranie
 }
 
 productBtn.addEventListener('click', addToList)

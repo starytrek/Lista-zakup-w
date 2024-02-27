@@ -120,8 +120,8 @@ priceInput.addEventListener('focus', function () {
 })
 
 nameInput.addEventListener('focus', function () {
-    inputInfo.innerText = 'Dodaj nazwę';
-});
+	inputInfo.innerText = 'Dodaj nazwę'
+})
 
 document.addEventListener('click', function (event) {
 	if (event.target !== priceInput) {

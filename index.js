@@ -10,7 +10,7 @@ const inputInfo = document.getElementById('input-info') // Referencja do element
 let products = JSON.parse(localStorage.getItem('products')) || []
 
 // Funkcja dodająca produkt do listy
-const addToList = () => {
+const addToList = event => {
 	const actualPrice = priceInput.value.trim() // Pobranie ceny produktu (pozbycie się białych znaków na początku i końcu)
 	const actualName = nameInput.value.trim() // Pobranie nazwy produktu (pozbycie się białych znaków na początku i końcu)
 
@@ -53,12 +53,48 @@ const showProducts = () => {
 	// Dodanie każdego produktu do listy
 	products.forEach(({ name, price }) => {
 		const li = document.createElement('li') // Utworzenie nowego elementu <li>
-		li.innerHTML = `
-            <div class="fajny-produkt">
-                <span>${name}</span>
-                <span>${price}</span>
-            </div>`
+		li.innerHTML = `<div class="fajny-produkt"><div class="fajna-nazwa-cena">
+		<div class="name-li">${name}..............</div>
+		<div class="name-li">${price}</div></div>
+		<div class="tools">
+		<button class="complete"><i class="fas fa-check"></i></button>
+		<button class="edit">EDIT</button>
+		<button class="delete"><i class="fas fa-times"></i></button>
+		</div>
+        </div>`
 		ulList.appendChild(li) // Dodanie elementu <li> do listy <ul>
+	})
+}
+
+{
+	/* <div class="tools">
+<button class="complete"><i class="fas fa-check"></i></button>
+<button class="edit">EDIT</button>
+<button class="delete"><i class="fas fa-times"></i></button>
+</div>
+ */
+}
+
+const delProduct = (index, arr = products) => {
+	products.splice(index, 1)
+}
+const delFirst = (arr = products) => {
+	arr.shift() //tu ją inicjalizuje
+}
+const cancelProduct = (arr = products) => {
+	products.pop()
+}
+const addFirst = (id = '?', name = 'produkt', price = '100', arr = products) => {
+	arr.unshift({
+		// id: id,
+		// name: name,
+		// price: price,
+		// jeśli parametr obiektu i parametr funkcji są takie same, nie musze powtarzać nazmwy po : czyli id:id zapisuje jako id,
+		id,
+		name,
+		price,
+		// showName: () => console.log(`Właśnie dodałes ${name}`),
+		showName: () => console.log(`Właśnie dodałeś ${name}`),
 	})
 }
 
@@ -123,7 +159,7 @@ nameInput.addEventListener('focus', function () {
 	inputInfo.innerText = 'Dodaj nazwę'
 })
 
-document.addEventListener('click', function (event) {
+nameInput.addEventListener('blur', function (event) {
 	if (event.target !== priceInput) {
 		inputInfo.innerText = 'Daj nazwę i cenę'
 	}

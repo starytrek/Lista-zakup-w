@@ -164,6 +164,11 @@ nameInput.addEventListener('blur', function (event) {
 		inputInfo.innerText = 'Daj nazwę i cenę'
 	}
 })
+priceInput.addEventListener('blur', function (event) {
+	if (event.target !== nameInput && nameInput.value.trim().length === 0) {
+		inputInfo.innerText = 'Daj nazwę i cenę'
+	}
+})
 
 // document.addEventListener('click', function (event) {
 // 	if (event.target !== priceInput && event.target !== nameInput) {

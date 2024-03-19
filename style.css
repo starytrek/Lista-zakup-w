@@ -1,4 +1,4 @@
-git pull* {
+* {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
@@ -78,10 +78,9 @@ button {
 	padding: 20px;
 	margin: 10px 0;
 }
-.name-li{
+.name-li {
 	margin-top: 20px;
 	color: #00b3ff;
-
 }
 .fajny-produkt {
 	display: flex;

@@ -4,7 +4,8 @@ const ulList = document.getElementById('product-list')
 const nameInput = document.getElementById('product-input')
 const priceInput = document.getElementById('price-input')
 const clearBtn = document.getElementById('clear-btn')
-const inputInfo = document.getElementById('input-info') // Referencja do elementu wyświetlającego informacje dla użytkownika
+const inputInfo = document.getElementById('input-info')
+
 
 // Inicjalizacja tablicy przechowującej produkty (pobranie danych z local storage lub inicjalizacja pustej tablicy)
 let products = JSON.parse(localStorage.getItem('products')) || []

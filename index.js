@@ -175,4 +175,3 @@ priceInput.addEventListener('blur', function (event) {
 // 		inputInfo.innerText = 'Daj nazwę i cenę'
 // 	}
 // })
-//git ver1gitt

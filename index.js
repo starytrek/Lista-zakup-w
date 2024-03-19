@@ -6,7 +6,6 @@ const priceInput = document.getElementById('price-input')
 const clearBtn = document.getElementById('clear-btn')
 const inputInfo = document.getElementById('input-info')
 
-
 // Inicjalizacja tablicy przechowującej produkty (pobranie danych z local storage lub inicjalizacja pustej tablicy)
 let products = JSON.parse(localStorage.getItem('products')) || []
 
@@ -170,9 +169,3 @@ priceInput.addEventListener('blur', function (event) {
 		inputInfo.innerText = 'Daj nazwę i cenę'
 	}
 })
-
-// document.addEventListener('click', function (event) {
-// 	if (event.target !== priceInput && event.target !== nameInput) {
-// 		inputInfo.innerText = 'Daj nazwę i cenę'
-// 	}
-// })

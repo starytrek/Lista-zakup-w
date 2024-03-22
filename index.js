@@ -4,10 +4,12 @@ const ulList = document.getElementById('product-list')
 const nameInput = document.getElementById('product-input')
 const priceInput = document.getElementById('price-input')
 const clearBtn = document.getElementById('clear-btn')
-const inputInfo = document.getElementById('input-info') // Referencja do elementu wyświetlającego informacje dla użytkownika
+const inputInfo = document.getElementById('input-info')
+// Referencja do elementu wyświetlającego informacje dla użytkownika
 
 // Inicjalizacja tablicy przechowującej produkty (pobranie danych z local storage lub inicjalizacja pustej tablicy)
 let products = JSON.parse(localStorage.getItem('products')) || []
+let id = 0
 
 // Funkcja dodająca produkt do listy
 const addToList = event => {
@@ -78,6 +80,10 @@ const showProducts = () => {
 const delProduct = (index, arr = products) => {
 	products.splice(index, 1)
 }
+const delButton = document.getElementByClassName('delete')
+
+delButton.addEventListener('click', delProduct(1))
+
 const delFirst = (arr = products) => {
 	arr.shift() //tu ją inicjalizuje
 }
@@ -99,8 +105,10 @@ const addFirst = (id = '?', name = 'produkt', price = '100', arr = products) => 
 }
 
 // Funkcja dodająca produkt do tablicy
+
 const addProduct = (name, price) => {
-	products.push({ name, price }) // Dodanie nowego produktu do tablicy
+	id++
+	products.push({ id, name, price }) // Dodanie nowego produktu do tablicy
 	saveToLocalStorage() // Zapisanie tablicy do local storage
 }
 
@@ -161,6 +169,11 @@ nameInput.addEventListener('focus', function () {
 
 nameInput.addEventListener('blur', function (event) {
 	if (event.target !== priceInput) {
+		inputInfo.innerText = 'Daj nazwę i cenę'
+	}
+})
+priceInput.addEventListener('blur', function (event) {
+	if (event.target !== nameInput && nameInput.value.trim().length === 0) {
 		inputInfo.innerText = 'Daj nazwę i cenę'
 	}
 })

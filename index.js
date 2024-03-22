@@ -80,9 +80,9 @@ const showProducts = () => {
 const delProduct = (index, arr = products) => {
 	products.splice(index, 1)
 }
-const delButton = document.getElementByClassName('delete')
+// const delButton = document.getElementByClassName('delete')
 
-delButton.addEventListener('click', delProduct(1))
+// delButton.addEventListener('click', delProduct(1))
 
 const delFirst = (arr = products) => {
 	arr.shift() //tu ją inicjalizuje
@@ -183,4 +183,3 @@ priceInput.addEventListener('blur', function (event) {
 // 		inputInfo.innerText = 'Daj nazwę i cenę'
 // 	}
 // })
-aaa

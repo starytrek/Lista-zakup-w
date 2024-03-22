@@ -26,6 +26,7 @@ h1 {
 }
 
 main {
+	/* width: 600px; */
 	display: flex;
 	flex-direction: column;
 	/* padding-top: 50px; */
@@ -78,9 +79,23 @@ button {
 	padding: 20px;
 	margin: 10px 0;
 }
-.name-li {
+.names {
+	display: flex;
+	/* gap: 0px; */
+}
+.name-box {
+	width: 120px;
+	display: flex;
 	margin-top: 20px;
-	color: #00b3ff;
+	/* color: #00b3ff; */
+}
+.name-li {
+	width: 120px;
+	color: navy;
+}
+.price-li {
+	font-weight: bold;
+	color: tomato;
 }
 .fajny-produkt {
 	display: flex;
@@ -92,12 +107,12 @@ button {
 	/* padding-right: 20px; */
 	/* margin-right: 20px; */
 }
-.fajna-nazwa-cena {
+/* .fajna-nazwa-cena {
 	display: flex;
 	justify-content: space-between;
 	text-align: center;
 	justify-content: center;
-}
+} */
 .tools {
 	display: inline-block;
 }

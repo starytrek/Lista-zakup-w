@@ -5,11 +5,17 @@ const nameInput = document.getElementById('product-input')
 const priceInput = document.getElementById('price-input')
 const clearBtn = document.getElementById('clear-btn')
 const inputInfo = document.getElementById('input-info')
+
+// const productName = document.querySelector('.name-li')
+// const productPrice = document.querySelector('.price-li')
+
+let isEditing = false //flaga wartość początkowa
+
 // Referencja do elementu wyświetlającego informacje dla użytkownika
 
 // Inicjalizacja tablicy przechowującej produkty (pobranie danych z local storage lub inicjalizacja pustej tablicy)
 let products = JSON.parse(localStorage.getItem('products')) || []
-let id = 0
+// let id = 0
 
 // Funkcja dodająca produkt do listy
 const addToList = event => {
@@ -56,8 +62,12 @@ const showProducts = () => {
 	products.forEach(({ name, price }) => {
 		const li = document.createElement('li') // Utworzenie nowego elementu <li>
 		li.innerHTML = `<div class="fajny-produkt"><div class="fajna-nazwa-cena">
-		<div class="name-li">${name}..............</div>
-		<div class="name-li">${price}</div></div>
+
+		<div class="names">
+			<div class="name-box name-li">${name}</div>
+			<div class="name-box price-li">${price}</div></div>
+		</div>
+		
 		<div class="tools">
 		<button class="complete"><i class="fas fa-check"></i></button>
 		<button class="edit">EDIT</button>
@@ -80,9 +90,6 @@ const showProducts = () => {
 const delProduct = (index, arr = products) => {
 	products.splice(index, 1)
 }
-// const delButton = document.getElementByClassName('delete')
-
-// delButton.addEventListener('click', delProduct(1))
 
 const delFirst = (arr = products) => {
 	arr.shift() //tu ją inicjalizuje
@@ -107,8 +114,7 @@ const addFirst = (id = '?', name = 'produkt', price = '100', arr = products) => 
 // Funkcja dodająca produkt do tablicy
 
 const addProduct = (name, price) => {
-	id++
-	products.push({ id, name, price }) // Dodanie nowego produktu do tablicy
+	products.push({ name, price }) // Dodanie nowego produktu do tablicy
 	saveToLocalStorage() // Zapisanie tablicy do local storage
 }
 
@@ -178,8 +184,34 @@ priceInput.addEventListener('blur', function (event) {
 	}
 })
 
-// document.addEventListener('click', function (event) {
-// 	if (event.target !== priceInput && event.target !== nameInput) {
-// 		inputInfo.innerText = 'Daj nazwę i cenę'
-// 	}
+// document.addEventListener('DOMContentLoaded', () => {
+// 	const editButtons = document.querySelectorAll('.edit')
+// 	editButtons.forEach(button => {
+// 		button.addEventListener('click', editProduct)
+// 	})
 // })
+
+document.addEventListener('DOMContentLoaded', () => {
+	const editButtons = document.querySelectorAll('.edit')
+	editButtons.forEach(button => {
+		button.addEventListener('click', event => editProduct(event)) // Przekazanie event jako argument do funkcji editProduct
+	})
+})
+
+const editProduct = event => {
+	isEditing = true
+
+	const listItem = event.target.closest('li') // Znajdź najbliższy element <li>
+	const productName = listItem.querySelector('.name-li').innerText // Pobierz nazwę produktu z elementu <li>
+	const productPrice = listItem.querySelector('.price-li').innerText // Pobierz cenę produktu z elementu <li>
+
+	nameInput.value = productName // Ustaw nazwę produktu w polu input
+	priceInput.value = productPrice // Ustaw cenę produktu w polu input
+}
+
+//chronologia:
+// 1.odczytywany HTML bez przycisków
+// 2.wykonywany listener na przyciskach które nie istnieją
+// 3.tworzone za pomocą JS innerHTML <li> z przyciskami
+// 4.żeby temu zaradzić czekamy aż DOM się wczyta, wtedy wykona się krok 2.
+// kolejność 1. 3. 2.
